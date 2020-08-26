@@ -1,0 +1,41 @@
+html
+    head
+        meta(charset="UTF-8")
+        meta(name="author" content="Carlos Cortes")
+        link(rel="stylesheet" href="client/css/login.css")
+        link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous")
+        link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
+        script(src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous")
+        script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous")
+        script(src="client/js/login.js")
+    body
+        .container
+            .row
+                .col-sm-9.col-md-7.col-lg-5.mx-auto
+                    .card.card-signin.my-5
+                        .card-body
+                            span.img-container
+                                img.text-center(src="/assets/logo.png" alt="Smart Pump Icon" style="width:160px;height:128px;")
+                            h5.card-title.text-center Sign In
+                            .form-signin
+                                .form-label-group
+                                    input#inputEmail.form-control(type='email' placeholder='Email address' required='' autofocus='')
+                                    label(for='inputEmail') Email address
+                                .form-label-group
+                                    input#inputPassword.form-control(type='password' placeholder='Password' required='')
+                                    label(for='inputPassword') Password
+                                
+                                button#SignIn.btn.btn-lg.btn-primary.btn-block.text-uppercase Sign in
+                                hr.my-4
+                                a.btn.btn-lg.btn-danger.btn-block.text-uppercase(href="newUser") Create Account
+            #modal.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true')
+                .modal-dialog(role='document')
+                    .modal-content
+                        .modal-header
+                            h5#modalTitle.modal-title Login Failed!
+                            button.close(type='button' data-dismiss='modal' aria-label='Close')
+                                span(aria-hidden='true') &times;
+                        #modalBody.modal-body body
+                        .modal-footer
+                            button.btn.btn-danger(type='button' data-dismiss='modal') Close

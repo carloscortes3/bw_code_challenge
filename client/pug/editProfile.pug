@@ -1,0 +1,68 @@
+
+mixin row_input(text, id_name, typ)
+    .form-label-group
+        input.form-control(type=typ placeholder=text required='' id=id_name)
+        label(for=id_name)= text
+
+mixin modal(id_1, id_2, title, body)
+    .modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true' id= id_1)
+        .modal-dialog(role='document')
+            .modal-content
+                .modal-header
+                    h5#modalTitle1.modal-title= title
+                    button.close(type='button' data-dismiss='modal' aria-label='Close')
+                        span(aria-hidden='true') &times;
+                .modal-body(id=id_2)= body
+                .modal-footer
+                    button.btn.btn-secondary(type='button' data-dismiss='modal') Close
+html
+    head
+        meta(charset="UTF-8")
+        meta(name="author" content="Carlos Cortes")
+        link(rel="stylesheet" href="client/css/login.css")
+        link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous")
+        link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
+        script(src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous")
+        script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous")
+        script(src="client/js/editProfile.js")
+    body
+        .container
+            .row
+                .col-sm-9.col-md-7.col-lg-5.mx-auto
+                    .card.card-signin.my-5
+                        .card-body
+                            h5.card-title.text-center Edit Profile
+                            .form-signin
+                                .row.row-margin-20
+                                    .col-3
+                                        h5.card-subtitle.mb-2.text-muted Email:
+                                    .col-9
+                                        h6#email.card-subtitle.mb-2.text-muted JohnDoe@anonymous.com
+                                .row.row-margin-5
+                                +row_input('First Name', 'firstName', 'text')
+                                +row_input('Last Name', 'lastName', 'text')
+                                +row_input('Age', 'age', 'number')
+                                +row_input('Eye Color', 'eyeColor', 'text')
+                                +row_input('Company', 'company', 'text')
+                                +row_input('Phone', 'phone', 'text')
+                                +row_input('Address', 'address', 'text')
+                                .custom-control.custom-checkbox.mb-3
+                                    input#isActive.custom-control-input(type='checkbox')
+                                    label.custom-control-label(for='isActive') Is Active
+                                button#saveChanges.btn.btn-lg.btn-primary.btn-block.text-uppercase Save Changes
+
+                                hr.my-4
+
+                            h5.card-title.text-center Change Password
+                            .form-signin
+                                +row_input('Current Password', 'currentPassword', 'password')
+                                +row_input('New Password', 'newPassword', 'password')
+                                +row_input('Re-Enter New Password', 'reNewPassword', 'password')
+                                button#pswdBtn.btn.btn-lg.btn-primary.btn-block.text-uppercase Change Password
+                                a.btn.btn-lg.btn-danger.btn-block.text-uppercase(href="dashboard") Back
+
+            +modal('modal1', 'modalBody1', 'Password Change Failed!', 'body')
+            +modal('modal2', 'modalBody2', 'Failed to edit Info', 'body')
+            +modal('modal3', 'modalBody3', 'Success!!!!!', 'You have successfully changed your password!')
+            

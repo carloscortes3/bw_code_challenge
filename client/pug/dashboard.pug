@@ -1,0 +1,74 @@
+mixin sized_row(first, second, id_name)
+    .row.row-margin-20
+        .col-6
+            h5.card-subtitle.mb-2.text-muted= first
+        .col-6
+            h5.card-subtitle.mb-2.text-muted(id= id_name)= second
+html
+    head
+        meta(charset="UTF-8")
+        meta(name="author" content="Carlos Cortes")
+        link(rel="stylesheet" href="client/css/login.css")
+        link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous")
+        link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
+        script(src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous")
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous")
+        script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous")
+        script(src="client/js/dashboard.js")
+    body
+        .container
+            .row
+                .col-sm-9.col-md-7.col-lg-5.mx-auto
+                    .card.card-signin.my-5
+                        .card-body
+                            .row.row-margin-5
+                            h3.card-title.text-center Account Info
+                            .row.row-margin-20
+                                .col
+                                    button#ShowBalance.btn.btn-lg.btn-primary.btn-block.text-uppercase Balance
+                                .col
+                                    a#EditProfile.btn.btn-lg.btn-secondary.btn-block.text-uppercase(href="/editProfile") Edit
+                            .row.row-margin-20
+                                .col-3
+                                    h5.card-subtitle.mb-2.text-muted Email:
+                                .col-9
+                                    h6#email.card-subtitle.mb-2.text-muted JohnDoe@anonymous.com
+
+                            +sized_row('First Name:', 'John', 'first')
+                            +sized_row('Last Name:', 'Doe', 'last')
+                            +sized_row('Age:', '35', 'age')
+                            +sized_row('Eye Color:', 'Pink', 'eye')
+                            +sized_row('Company:', 'Anonymous', 'company')
+                            +sized_row('Phone:', '123-456-7890', 'phone')
+                            
+                            .row.row-margin-20
+                                .col-4
+                                    h5.card-subtitle.mb-2.text-muted Address:
+                                .col-8
+                                    h6#address.card-subtitle.mb-2.text-muted 123 4th
+                            hr.my-4
+
+                            button#LogOut.btn.btn-lg.btn-danger.btn-block.text-uppercase Log Out
+
+            #modal1.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true')
+                .modal-dialog(role='document')
+                    .modal-content
+                        .modal-header
+                            h5#modalTitle1.modal-title Current Balance
+                            button.close(type='button' data-dismiss='modal' aria-label='Close')
+                                span(aria-hidden='true') &times;
+                        #modalBody1.modal-body 
+                            h3#mb1text.text-center $100.00!!!
+                        .modal-footer
+                            button.btn.btn-danger(type='button' data-dismiss='modal') Close
+            #modal2.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true')
+                .modal-dialog(role='document')
+                    .modal-content
+                        .modal-header
+                            h5#modalTitle2.modal-title Logging Out
+                            button.close(type='button' data-dismiss='modal' aria-label='Close')
+                                span(aria-hidden='true') &times;
+                        #modalBody2.modal-body Are you sure you want to log out?
+                        .modal-footer
+                            button.btn.btn-danger(type='button' data-dismiss='modal') No
+                            button#logOutSuccess.btn.btn-success(type='button' data-dismiss='modal') Yes
